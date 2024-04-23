@@ -1,0 +1,102 @@
+@use './variable' as var;
+@import './font';
+@import './reset';
+
+/**** Default ****/
+html{
+    font-size: 62.5%;
+    font-family: mont, pre;
+    touch-action: manipulation;
+    overflow-x:hidden;
+    @include var.custom(var.$tablet){
+        font-size:0.85vw
+    }
+    @include var.custom(var.$mobile){
+        font-size:1.3021vw
+    }
+    @include var.custom(320px){
+        font-size:1.45vw
+    }
+}
+body{
+    font-size: 1.6rem;
+    line-height: 1;
+    letter-spacing: -.04em;
+    word-break: keep-all;
+    color:var.$dark;
+    @include var.fontWeight(400)
+}
+.pin{
+    overflow:hidden
+}
+section{
+    position:relative;
+    width:100vw;
+    overflow:hidden;
+    z-index:1;
+    .inner{
+        position:relative;
+        max-width:1280px;
+        height:100%;
+        margin:0 auto;
+        padding:10rem 4rem;
+        @include var.custom(var.$tablet){
+            padding:10rem 7rem
+        }
+        @include var.custom(var.$mobile){
+            padding:15rem 5rem
+        }
+    }
+}
+.title{
+    @include var.setFont(6rem, 700);
+    word-spacing:-0.1em;
+    text-shadow:0.5rem 0.5rem var(--shadow, rgba(255,255,255,.3));
+    > div{
+        display:inline-block;
+        line-height:1.1;
+        perspective:200px;
+        p{
+            transform:rotateY(calc(150deg - var(--deg, 0) * 150deg));
+        }
+    }
+    @include var.custom(var.$mobile){
+        font-size:5rem
+    }
+    @include var.custom(500px){
+        font-size:5.5rem
+    }
+}
+.cursor{
+    position:fixed;
+    @include var.circle(15px);
+    background:var(--bg, var.$light);
+    mix-blend-mode:difference;
+    transform:translate(-50%, -50%) translate(var(--x, 0px), var(--y, 0px));
+    pointer-events:none;
+    z-index:10
+}
+html.lenis {
+    height: auto;
+}
+.lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+    overflow: hidden;
+}
+.lenis.lenis-scrolling iframe {
+    pointer-events: none;
+}
+
+.footer{
+    width:100%;
+    padding:10rem 0 3rem;
+    text-align:center;
+    // @media(orientation:landscape){
+    //     padding-top:5rem
+    // }
+}

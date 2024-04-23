@@ -1,0 +1,115 @@
+@use '$scss/set/variable' as var;
+
+.quick{
+    position:fixed;
+    top:3rem;
+    right:3rem;
+    text-align:center;
+    color:var.$dark;
+    transform:translateX(50%);
+    opacity:0;
+    animation:fade 0.8s ease 1s forwards;
+    mix-blend-mode:difference;
+    z-index:99;
+    .radius{
+        @include var.circle(50px)
+    }
+    .line{
+        @include var.absDefault();
+        width:50px;
+        height:50px;
+        overflow:visible;
+        z-index:-1;
+        .tail{
+            transform-origin:50%;
+            transform-box:fill-box
+        }
+        .t-large{
+            stroke-dasharray:160px;
+            stroke-dashoffset:var(--progress, 160px)
+        }
+        .t-small{
+            stroke-dasharray:130px;
+            stroke-dashoffset:var(--progress, 130px)
+        }
+    }
+    .blobs{
+        --bg:#fff;
+        @include var.absDefault();
+        filter:url(#goo);
+        opacity:0.5;
+        z-index:-2;
+        .blob{
+            position:absolute;
+            background:var(--bg)
+        }
+    }
+    .blob01{
+        top:0;
+        right:0
+    }
+    .blob02{
+        top:-17px;
+        left:-70px
+    }
+    .blob03{
+        top:30px;
+        left:-65px
+    }
+    .blob04{
+        top:65px;
+        left:-30px
+    }
+    .blob05{
+        bottom:-70px;
+        right:-17px
+    }
+    li{
+        position:absolute;
+        pointer-events:none;
+        button{
+            position:relative;
+            pointer-events:auto
+        }
+        p{
+            position:absolute;
+            opacity:0;
+            @include var.setFont(1.4rem, 500)
+        }
+    }
+    
+    @include var.custom(1920px, min){
+        right:calc(50% - 960px + 3rem)
+    }
+    @include var.custom(1000px){
+        .radius{
+            font-size:15px
+        }
+    }
+    @include var.custom(500px){
+        .line{
+            width:40px;
+            height:40px
+        }
+        .radius{
+            @include var.circle(40px);
+            font-size:12px
+        }
+        .blob02{
+            top:-5px;
+            left:-60px
+        }
+        .blob03{
+            top:32px;
+            left:-60px
+        }
+        .blob04{
+            top:60px;
+            left:-32px
+        }
+        .blob05{
+            bottom:-60px;
+            right:-7px
+        }
+    }
+}

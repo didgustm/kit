@@ -1,0 +1,151 @@
+@use '$scss/set/variable' as var;
+
+.detail{
+    background:var.$light;
+    z-index:1;
+    .top{
+        position:sticky;
+        top:0;
+        text-align:center
+    }
+    .close{
+        position:absolute;
+        top:3rem;
+        right:3rem;
+        z-index:1
+    }
+    .title{
+        @include var.setFont(7rem, 550);
+        letter-spacing:-.2rem;
+        line-height:1.2;
+        margin-top:2.5rem
+    }
+    .descript{
+        font-size:2rem
+    }
+    .url{
+        display:inline-block;
+        font-size:1.8rem;
+        line-height:1.35;
+        margin:2rem 0;
+        color:#616161;
+        &:hover{
+            color:var.$theme;
+            text-decoration:underline
+        }
+    }
+    .category{
+        @include var.flex(center);
+        @include var.setFont(1.4rem, 500);
+        color:var.$gray;
+        span{
+            margin:0 1rem
+        }
+    }
+    .view{
+        position:relative;
+        background:var.$light;
+        margin:0 1.6rem;
+        background:#f7f7f7;
+        border-radius:3rem 3rem 0 0;
+        z-index:2
+    }
+    .view_img{
+        max-width:1920px;
+        padding:10rem 14rem;
+        margin:0 auto
+    }
+    .btn_top{
+        position:fixed;
+        bottom:1rem;
+        right:2rem;
+        @include var.circle(5rem);
+        background:var.$dark;
+        color:#fff;
+        z-index:3;
+        &::before{
+            transform:scale(1);
+            opacity:0.3
+        }
+    }
+
+    @include var.custom(1400px){
+        .view{
+            .view_img{
+                padding:10rem 5rem
+            }
+        }
+    }
+    @include var.custom(1000px){
+        .close{
+            img{
+                width:3rem;
+                height:3rem
+            }
+        }
+    }
+    @include var.custom(var.$mobile){
+        .title{
+            font-size:5.5rem
+        }
+        .inner{
+            padding:{
+                top:7rem;
+                bottom:7rem
+            }
+        }
+        .view{
+            .view_img{
+                padding:5rem 3rem
+            }
+        }
+        .url{
+            color:var.$theme
+        }
+    }
+    @include var.custom(500px){
+        .close{
+            top:1rem;
+            right:1rem;
+            font-size:2.4rem
+        }
+        .descript{
+            font-size:2.4rem
+        }
+        .title{
+            font-size:8rem
+        }
+        .url{
+            font-size:2rem
+        }
+        .category{
+            font-size:1.8rem
+        }
+        .btn_top{
+            width:7rem;
+            height:7rem
+        }
+    }
+}
+
+
+
+.loading{
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:#fff;
+    z-index:100
+}
+.loading svg{
+    stroke-dasharray:140px;
+    stroke:var.$theme;
+}
+.loading svg{
+    animation:load_circle 2s ease infinite
+}
