@@ -8,7 +8,7 @@
     color:var.$dark;
     transform:translateX(50%);
     opacity:0;
-    animation:fade 0.8s ease 1s forwards;
+    animation:fade 0.8s ease 0.4s forwards;
     mix-blend-mode:difference;
     z-index:99;
     .radius{

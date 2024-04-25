@@ -1,7 +1,7 @@
 @use '$scss/set/variable' as var;
 
-.visual{
-    height:200svh;
+.visual{;
+    height:100svh;
     background:var.$dark;
     color:var.$light;
     overflow:hidden;
@@ -14,7 +14,7 @@
         text-align:center;
         @include var.setFont(8rem, 800);
         line-height:1.2;
-        text-shadow:0.5rem 1rem rgba(255,255,255,.1);
+        //text-shadow:0.5rem 1rem rgba(255,255,255,.3);
         mix-blend-mode:difference
     }
     .canvas{
@@ -35,13 +35,22 @@
         mix-blend-mode:difference
     }
     .bg{
-        @include var.absDefault(calc(50% - 80rem), calc(50% - 40rem));
+        @include var.absDefault(calc(50% - 40rem), calc(50% - 40rem));
         @include var.circle(80rem);
-        background:var.$light;
+        background:var.$gray;
+        transform:scale(0);
+        opacity:1;
+        z-index:3;
+        mix-blend-mode:difference
+    }
+    .bg2{
+        @include var.absDefault();
+        width:100vw;
+        height:100vh;
+        background:#fff;
         transform:scale(0);
         opacity:0;
-        z-index:3;
-        // mix-blend-mode:difference
+        z-index:4
     }
 
     @include var.custom(1600px, min){

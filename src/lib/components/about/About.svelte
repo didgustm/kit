@@ -4,13 +4,11 @@
     import Info from './Info.svelte'
     import Career from './Career.svelte'
     import Skills from './Skills.svelte';
-
-    export let deg;
 </script>
 
-<section class="about aos">
+<section class="about">
     <div class="inner">
-        <Title { deg } />
+        <Title />
         <div class="introduce">
             <Info />
             <Career />

@@ -57,7 +57,8 @@ section{
         line-height:1.1;
         perspective:200px;
         p{
-            transform:rotateY(calc(150deg - var(--deg, 0) * 150deg));
+            transform:rotateY(40deg);
+            opacity:0
         }
     }
     @include var.custom(var.$mobile){
@@ -65,6 +66,13 @@ section{
     }
     @include var.custom(500px){
         font-size:5.5rem
+    }
+}
+.down{
+    .title{
+        p{
+            transition:opacity 0.4s
+        }
     }
 }
 .cursor{

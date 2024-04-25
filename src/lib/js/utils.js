@@ -1,6 +1,5 @@
 import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
-import Lenis from '@studio-freight/lenis';
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 
 export const fetchMarkdownPosts = async () => {
     const allPostFiles = import.meta.glob('/src/routes/list/*.md'),
@@ -33,74 +32,60 @@ export const throttle = (callback, delay) => {
 }
 
 gsap.registerPlugin(ScrollTrigger);
-export function SmoothScroll(){
-    this.lenis = new Lenis({
-        syncTouch: true,
-        easing: 'none'
-    });
-    this.lenis.on('scroll', ScrollTrigger.update);
-
-    gsap.ticker.add((time) => {
-        this.lenis.raf(time * 1000)
-    });
-    gsap.ticker.lagSmoothing(0);
-}
-
-export function Scrollvalue(){
-    this.h = document.querySelector('.pin').getBoundingClientRect().height;
-    // window.addEventListener('resize', () => {
-    //     this.h = document.querySelector('.pin').getBoundingClientRect().height;
-    // })
-    this.tl = gsap.timeline({
+export const indexScroll = () => {
+    let pin = gsap.timeline({
         scrollTrigger: {
-            trigger: '.pin',
-            scrub: 1,
-            pin: '.visual',
-            markers: true,
-            pinSpacing: false,
-            end: `+=${this.h} ${innerHeight}`,
-            onUpdate: ({progress}) => {
-                innerWidth > 500? this.strokeOffset = 160 - progress*160: this.strokeOffset = 130 - progress*130
-            }
+            trigger: '.visual',
+            pin: true,
+            anticipatePin: 1,
+            fastScrollEnd: true,
+            scrub: 0,
+            end: `${innerHeight * 2}`
         }
     });
+    pin.to('.visual .title', { scale:1.2, ease:'none' })
+    .to('.visual .title', { scale:1.5, ease:'none' })
+    .to('.visual .bg', { opacity:1, scale:5, duration:2, ease:'none' }, '<')
+    .to('.visual .bg2', { scale:1 }, '<')
+    .to('.visual .bg2', { opacity:1, duration:0.4 }, '-=1');
+
+    let tl = gsap.timeline({
+        scrollTrigger: {
+            trigger: '.about',
+            end:`center+=${innerHeight/2.3} center`,
+            scrub:0
+        }
+    });
+    tl.to('.about .title p', { opacity:1, rotateY:0, duration:1, delay:1 })
+    .to('.about .image', { scale:1, opacity:1 }, '<')
+    .to('.about .info p', { opacity:1, y:0 }, '<')
+    .to('.career01', { opacity:1, y:0 }, '<')
+    .to('.career .line', { scaleY:1 })
+    .to('.career02', { opacity:1, y:0 }, '-=0.5')
+    .to('.about .box01', { x:0, xPercent:0, opacity:1, scale:1, duration:0.6 })
+    .to('.about .box02', { x:0, xPercent:0, y:0, yPercent:0, opacity:1, scale:1, duration:0.6 }, '-=0.3')
+    .to('.about .box03', { x:0, xPercent:0, y:0, opacity:1, scale:1, duration:0.6 }, '-=0.3')
+    .to('.about .box04', { x:0, opacity:1, scale:1, duration:0.6 }, '-=0.3');
+
+    let tlB = gsap.timeline({
+        scrollTrigger: {
+            trigger: '.portfolio',
+            end:`center center`,
+            scrub:0
+        }
+    });
+    tlB.to('.portfolio .title p', { opacity:1, rotateY:0, duration:1, delay:1 })
+    .to('.portfolio swiper-slide', { opacity:1, x:0, xPercent:0, duration:2 });
+
+    let tlC = gsap.timeline({
+        scrollTrigger: {
+            trigger: '.contact',
+            end:`center+=${innerHeight/2} bottom+=100`,
+            scrub:0
+        }
+    });
+    tlC.to('.contact .title p', { opacity:1, rotateY:0, duration:1, delay:1 })
+    .to('.contact .list01', { opacity:1, y:0 })
+    .to('.contact .list02', { opacity:1, y:0 })
+    .to('.contact .list03', { opacity:1, y:0 })
 }
-
-
-// export const scrollMotion = () => {
-//     let deg, deg02, deg03, strokeOffset;
-//     let h = document.querySelector('.pin').getBoundingClientRect().height;  
-//     window.addEventListener('resize', () => {
-//         h = document.querySelector('.pin').offsetHeight;
-//     })
-//     let scr = gsap.timeline({
-//         scrollTrigger: {
-//             trigger: '.pin',
-//             scrub: 1,
-//             pin: '.visual',
-//             pinSpacing: false,
-//             //markers: true,
-//             //start: 'top top',
-//             end: `+=${h} ${innerHeight}`,
-//             onUpdate: (target) => {
-//                 innerWidth > 500? strokeOffset = 160 - target.progress*160: strokeOffset = 130 - target.progress*130;
-//                 if(target.progress >= 0.42){
-//                     deg = 1
-//                 } else if(target.progress > 0.27){
-//                     deg = target.progress * 2.38
-//                 }
-//                 if(target.progress >= 0.7){
-//                     deg02 = 1
-//                 } else if(target.progress > 0.55){
-//                     deg02 = target.progress * 1.42
-//                 }
-//                 if(target.progress > 0.8){
-//                     deg03 = target.progress;
-//                 }
-//                 //console.log(target.progress)
-//             }
-//         }
-//     });
-
-//     return deg, deg02, deg03, strokeOffset, scr;
-// }

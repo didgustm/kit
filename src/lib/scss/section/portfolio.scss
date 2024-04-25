@@ -10,8 +10,6 @@
         width:100%;
         margin-top:8rem;
         overflow:visible;
-        transform:translateY(100%);
-        opacity:0
     }
     swiper-container{
         height:60rem;
@@ -28,7 +26,15 @@
         }
     }
     swiper-slide{
-        width:31.8rem
+        width:31.8rem;
+        &:nth-child(odd){
+            opacity:0;
+            transform:translateX(-50%)
+        }
+        &:nth-child(even){
+            opacity:0;
+            transform:translateX(50%)
+        }
     }
     .box{
         display:block;
@@ -151,11 +157,6 @@
         }
     }
     @include var.custom(var.$mobile){
-        .title{
-            p{
-                transform:rotateY(calc(200deg - var(--deg, 0) * 200deg));
-            }
-        }
         swiper-container{
             height:calc((28rem * 2) + 20px)
         }

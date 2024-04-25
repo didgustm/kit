@@ -311,4 +311,5 @@
     </div>
     <Scroll />
     <div class="bg"></div>
+    <div class="bg2"></div>
 </section>

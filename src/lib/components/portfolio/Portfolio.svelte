@@ -3,12 +3,12 @@
     import Title from './Title.svelte'
     import List from './List.svelte';
 
-    export let data, deg02;
+    export let data;
 </script>
 
 <section class="portfolio">
     <div class="inner">
-        <Title { deg02 } />
+        <Title />
         <List { data } />
     </div>
 </section>

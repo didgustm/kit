@@ -18,7 +18,12 @@
         @include var.setFont(7rem, 550);
         letter-spacing:-.2rem;
         line-height:1.2;
-        margin-top:2.5rem
+        margin-top:2.5rem;
+        overflow:hidden;
+        p{
+            opacity:1;
+            transform:rotate(0)
+        }
     }
     .descript{
         font-size:2rem
@@ -53,7 +58,8 @@
     .view_img{
         max-width:1920px;
         padding:10rem 14rem;
-        margin:0 auto
+        margin:0 auto;
+        text-align:center;
     }
     .btn_top{
         position:fixed;

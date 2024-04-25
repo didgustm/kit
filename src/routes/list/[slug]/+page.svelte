@@ -1,5 +1,7 @@
 <script>
     import '$scss/section/detail.scss'
+    import { gsap } from 'gsap'
+    import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
     import { onMount } from 'svelte'
     import { fade } from 'svelte/transition'
     import { views } from '$js/view'
@@ -11,16 +13,13 @@
 
     export let data;
 
+    gsap.registerPlugin(ScrollTrigger);
     let detail, loading = false, scrollY = 0;
     const arr = [...views].reverse(),
                 src = arr[data.id - 1];
 
     const goTop = () => {
         window.scrollTo(0, {behavior: 'smooth'})
-    }
-
-    const goBack = () => {
-        window.history.back()
     }
 
     onMount(() => {
@@ -31,8 +30,17 @@
         viewImg.onload = () => {
             setTimeout(() => {
                 loading = false
-            }, 1000)
+            }, 500)
         }
+
+        let tl = gsap.timeline({
+            scrollTrigger: {
+                trigger:'.detail'
+            }
+        });
+
+        tl.fromTo('.fadeup', { yPercent:100, opacity:0 }, { yPercent:0, opacity:1, duration:1, delay:1 })
+        .fromTo('.view_img', { opacity:0 }, { opacity:1, duration:1, ease:'none' }, '<')
     })
     
 </script>
@@ -40,10 +48,10 @@
 <svelte:window
     bind:scrollY={scrollY}
 />
-<section class="detail" data-lenis-prevent bind:this={detail}>
-    <button class="buttons close" on:click={goBack}>
+<section class="detail" bind:this={detail}>
+    <a href="/" class="buttons close">
         <svelte:component this={ Fa } icon={ faXmark } size="3x" />
-    </button>
+    </a>
     <div class="inner">
         <Top { data } />
     </div>

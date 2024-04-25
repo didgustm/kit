@@ -26,7 +26,7 @@
             @include var.circle(7rem);
             overflow:hidden;
             transform:scale(0);
-            opacity:0
+            opacity:0;
         }
         p{
             transform:translateY(100%);
@@ -45,7 +45,7 @@
             background:var.$theme;
             transform:scaleY(0);
             transform-origin:50% 0;
-            z-index:-1
+            z-index:-1;
         }
         li{
             @include var.flex(flex-start, center);
@@ -53,7 +53,7 @@
             transform:translateY(10rem);
             opacity:0;
             &:nth-child(n+2){
-                padding-top:7rem
+                padding-top:7rem;
             }
         }
         .dot{
@@ -86,16 +86,16 @@
                 color:#fff;
             }
             &.box01{
-                transform:translate(-100%, 0) scale(1.25)
+                transform:translate(-50%,0) scale(1.25)
             }
             &.box02{
-                transform:translate(-100%,-50%) scale(1.5)
+                transform:translate(-50%,-25%) scale(1.5)
             }
             &.box03{
-                transform:translate(100%,50%) scale(1.5)
+                transform:translate(50%,25%) scale(1.5)
             }
             &.box04{
-                transform:translate(100%, 0) scale(1.25)
+                transform:translate(50%, 0) scale(1.25)
             }
         }
         dt{
@@ -149,11 +149,6 @@
     }
 
     @include var.custom(var.$mobile){
-        .title{
-            p{
-                transform:rotateY(calc(200deg - var(--deg, 0) * 200deg));
-            }
-        }
         .introduce{
             grid-template-columns:1fr
         }
@@ -232,3 +227,14 @@
         }
     }
 }
+
+// .down{
+//     *[class*=motion]{
+//         transition: all 0.4s
+//     }
+//     @for $i from 1 through 20{
+//         *[class*=--d#{$i}]{
+//             transition-delay:#{$i*0.05}s
+//         }
+//     }
+// }
