@@ -1,6 +1,7 @@
 @use '$scss/set/variable' as var;
 
-.visual{;
+.visual{
+    width:100vw;
     height:100svh;
     background:var.$dark;
     color:var.$light;
@@ -8,20 +9,23 @@
     z-index:1;
     .inner{
         @include var.flexCenter();
-        height:100svh
+        height:100svh        
     }
     .title{
         text-align:center;
         @include var.setFont(8rem, 800);
         line-height:1.2;
-        //text-shadow:0.5rem 1rem rgba(255,255,255,.3);
-        mix-blend-mode:difference
+        .letter{
+            display:inline-block;
+            color:var.$gray
+        }
     }
     .canvas{
         @include var.absDefault();
         width:100%;
         height:100%;
-        z-index:-1
+        z-index:2;
+        mix-blend-mode:difference
     }
     .scroll{
         position:absolute;
@@ -38,8 +42,6 @@
         @include var.absDefault(calc(50% - 40rem), calc(50% - 40rem));
         @include var.circle(80rem);
         background:var.$gray;
-        transform:scale(0);
-        opacity:1;
         z-index:3;
         mix-blend-mode:difference
     }
@@ -48,8 +50,6 @@
         width:100vw;
         height:100vh;
         background:#fff;
-        transform:scale(0);
-        opacity:0;
         z-index:4
     }
 

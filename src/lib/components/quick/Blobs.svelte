@@ -1,7 +1,7 @@
 <script>
     import { fly } from 'svelte/transition'
     
-    export let show, w, strokeOffset
+    export let show, w, strokeOffset;
 </script>
 
 <svg class="line">
@@ -12,11 +12,7 @@
             <feBlend in="SourceGraphic" in2="goo" />
         </filter>
     </defs>
-    {#if w > 500}
     <circle r="25" cx="25" cy="25" fill="none"  stroke-width="3" stroke="#fff" transform="rotate(-90)" class="tail t-large" style:--progress={strokeOffset} />
-    {:else}
-    <circle r="20" cx="20" cy="20" fill="none"  stroke-width="3" stroke="#fff" transform="rotate(-90)" class="tail t-small" style:--progress={strokeOffset} />
-    {/if}
 </svg>
 <div class="blobs radius">
     <span class="blob blob01 radius"></span>

@@ -55,11 +55,7 @@ section{
     > div{
         display:inline-block;
         line-height:1.1;
-        perspective:200px;
-        p{
-            transform:rotateY(40deg);
-            opacity:0
-        }
+        perspective:200px
     }
     @include var.custom(var.$mobile){
         font-size:5rem

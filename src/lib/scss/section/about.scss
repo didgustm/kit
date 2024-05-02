@@ -5,8 +5,11 @@
     color:var.$dark;
     background:var.$light;
     font-size:1.8rem;
+    overflow:visible;
     .title{
         --shadow:rgba(0,0,0,.1);
+        position:relative;
+        z-index:2
     }
     .introduce{
         display:grid;
@@ -14,7 +17,7 @@
         align-items:flex-start;
         padding-top:6rem;
         .date{
-            color:var.$dblue;
+            color:var.$dgray;
             @include var.fontWeight(300)
         }
     }
@@ -22,43 +25,56 @@
         position:relative;
         @include var.flex(flex-start, center);
         gap:2rem;
+        z-index:1;
+        .shape{
+            @include var.absDefault();
+            @include var.circle(7rem);
+            background:var.$theme;
+            transform:scale(7);
+            opacity:.3;
+            transform-origin:50% 40%;
+            filter:blur(10px);
+            z-index:-1;
+        }
         .image{
             @include var.circle(7rem);
-            overflow:hidden;
-            transform:scale(0);
-            opacity:0;
-        }
-        p{
-            transform:translateY(100%);
-            opacity:0
+            overflow:hidden
         }
     }
     .career{
         position:relative;
         margin-top:3rem;
         z-index:1;
+        .shape{
+            @include var.absDefault(0.4rem, 0);
+            @include var.circle(1rem);
+            background:#E2CBDE;
+            transform:scale(50);
+            // opacity:;
+            filter:blur(5px);
+            z-index:-1
+        }
         .line{
             @include var.pseudo(1px, auto);
             top:1rem;
             bottom:1rem;
             left:0.45rem;
-            background:var.$theme;
+            background:var.$dark;
             transform:scaleY(0);
             transform-origin:50% 0;
             z-index:-1;
         }
         li{
+            position:relative;
             @include var.flex(flex-start, center);
             gap:3rem;
-            transform:translateY(10rem);
-            opacity:0;
             &:nth-child(n+2){
                 padding-top:7rem;
             }
         }
         .dot{
             @include var.circle(1rem);
-            background:var.$theme
+            background:var.$dark
         }
         .date{
             min-width:15rem
@@ -66,36 +82,42 @@
     }
     .skills{
         position:relative;
-        display:grid;
-        grid-template-columns:repeat(4, 1fr);
-        gap:2rem;
         margin-top:8rem;
-        z-index:-1;
+        .bgs{
+            @include var.absDefault();
+            right:0;
+            bottom:0;
+            display:grid;
+            grid-template-columns:repeat(4, 1fr);
+            gap:2rem;
+            z-index:-1;
+            .bg{
+                background:rgba(202,202,202,.1);
+                transform:scale(3, 2);
+                opacity:0
+            }
+            .bg:nth-child(even){
+                background:rgba(151,151,151,.1);
+            }
+        }
+        ul{
+            display:grid;
+            grid-template-columns:repeat(4, 1fr);
+            gap:2rem;
+        }
         li{
-            --dot:#C28423;
+            --dot:#FFC8D7;
             position:relative;
             @include var.flex(space-between, flex-start, wrap, column);
             padding:5rem 3rem 3rem;
-            background:#fff;
-            border:1px solid var.$theme;
+            // background:#fff;
+            border:1px solid var.$gray;
             box-shadow:0 1rem 1rem rgba(0,0,0,.1);
             opacity:0;
             &:nth-child(even){
                 --dot:#fff;
-                background:var.$theme;
-                color:#fff;
-            }
-            &.box01{
-                transform:translate(-50%,0) scale(1.25)
-            }
-            &.box02{
-                transform:translate(-50%,-25%) scale(1.5)
-            }
-            &.box03{
-                transform:translate(50%,25%) scale(1.5)
-            }
-            &.box04{
-                transform:translate(50%, 0) scale(1.25)
+                background:var.$dgray;
+                color:#fff
             }
         }
         dt{
@@ -118,7 +140,8 @@
             right:2rem;
             @include var.circle(5rem);
             background:var(--dot);
-            opacity:0.15
+            opacity:0.3;
+            z-index:-1
         }
     }
 
@@ -168,29 +191,30 @@
             }
         }
         .skills{
-            grid-template-columns:1fr 1fr;
+            .bgs{
+                grid-template-columns:1fr 1fr;
+                .bg{
+                    &:nth-child(even){
+                        background:rgba(202,202,202,.1);
+                    }
+                    &.dark{
+                        background:rgba(151,151,151,.1);
+                    }
+                }
+            }
+            ul{
+                grid-template-columns:1fr 1fr;
+            }
             li{
                 &:nth-child(even){
-                    --dot:#C28423;
+                    --dot:#FFC8D7;
                     background:#fff;
                     color:var.$dark;
                 }
                 &.dark{
                     --dot:#fff;
-                    background:var.$theme;
+                    background:var.$dgray;
                     color:#fff;
-                }
-                &.box01{
-                    transform:translate(-50%, 0) scale(1.25)
-                }
-                &.box02{
-                    transform:translate(50%,-50%) scale(1.5)
-                }
-                &.box03{
-                    transform:translate(-50%,50%) scale(1.5)
-                }
-                &.box04{
-                    transform:translate(50%, 0) scale(1.25)
                 }
             }
             .dot{
@@ -208,7 +232,9 @@
             }
         }
         .skills{
-            gap:2rem 3rem;
+            ul, .bgs{
+                gap:2rem 3rem;
+            }
             .icon{
                 font-size:2rem
             }
@@ -227,14 +253,3 @@
         }
     }
 }
-
-// .down{
-//     *[class*=motion]{
-//         transition: all 0.4s
-//     }
-//     @for $i from 1 through 20{
-//         *[class*=--d#{$i}]{
-//             transition-delay:#{$i*0.05}s
-//         }
-//     }
-// }

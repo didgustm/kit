@@ -14,10 +14,8 @@
         li{
             @include var.flex(flex-start, center);
             gap:5rem;
-            transform:translateY(100%);
-            opacity:0;
             .img{
-                color:var.$theme
+                color:var.$dgray
             }
         }
         dt{
@@ -28,9 +26,9 @@
             @include var.setFont(1.8rem, 300);
             line-height:1.35;
             word-break:break-all;
-            color:var.$dblue;
+            color:var.$dgray;
             a:hover{
-                color:var.$theme;
+                color:var.$dark;
                 text-decoration:underline
             }
         }

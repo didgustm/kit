@@ -22,15 +22,9 @@
         z-index:-1;
         .tail{
             transform-origin:50%;
-            transform-box:fill-box
-        }
-        .t-large{
+            transform-box:fill-box;
             stroke-dasharray:160px;
             stroke-dashoffset:var(--progress, 160px)
-        }
-        .t-small{
-            stroke-dasharray:130px;
-            stroke-dashoffset:var(--progress, 130px)
         }
     }
     .blobs{
@@ -89,7 +83,10 @@
     @include var.custom(500px){
         .line{
             width:40px;
-            height:40px
+            height:40px;
+            .tail{
+                transform:scale(0.8) rotate(270deg) translate(6px, -6px)
+            }
         }
         .radius{
             @include var.circle(40px);

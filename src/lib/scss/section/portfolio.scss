@@ -17,24 +17,16 @@
             overflow:visible
         }
         &::part(scrollbar){
-            --swiper-scrollbar-drag-bg-color:#C28423;
+            --swiper-scrollbar-drag-bg-color:#979797;
             left:0;
             right:0;
             bottom:-5rem;
             width:100%;
-            background:var.$gray
+            background:var.$light
         }
     }
     swiper-slide{
         width:31.8rem;
-        &:nth-child(odd){
-            opacity:0;
-            transform:translateX(-50%)
-        }
-        &:nth-child(even){
-            opacity:0;
-            transform:translateX(50%)
-        }
     }
     .box{
         display:block;

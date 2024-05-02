@@ -22,6 +22,10 @@
         window.scrollTo(0, {behavior: 'smooth'})
     }
 
+    const goback = () => {
+        history.back();
+    }
+
     onMount(() => {
         const viewImg = new Image();
         viewImg.src = src;
@@ -48,8 +52,11 @@
 <svelte:window
     bind:scrollY={scrollY}
 />
-<section class="detail" bind:this={detail}>
-    <a href="/" class="buttons close">
+<section 
+    class="detail"
+    bind:this={detail}
+>
+    <a href="" class="buttons close" on:click={goback}>
         <svelte:component this={ Fa } icon={ faXmark } size="3x" />
     </a>
     <div class="inner">

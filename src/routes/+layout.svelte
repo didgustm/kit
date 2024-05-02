@@ -1,5 +1,6 @@
 <script>
     import '$scss/set/common.scss'
+    import { fade } from 'svelte/transition'
     import { spring } from 'svelte/motion'
     import { page } from '$app/stores'
     import { beforeNavigate } from '$app/navigation'
@@ -9,10 +10,11 @@
     import { throttle } from '$js/utils'
     import Quick from '$comp/quick/Quick.svelte';
 
+    export let data;
     let w = innerWidth, isMobile = window.matchMedia('(pointer:coarse)').matches;
     let quick = $page.url.pathname.includes('list')? false: true;
-    let strokeOffset = innerWidth > 500? 160: 130;
-    const mousePos = spring({ x:0, y:0 });
+    let strokeOffset = 160;
+    const mousePos = spring({ x:0, y:0 }, { stiffness:0.5 });
     const onMouseMove = (event) => {
         $mousePos = { x:event.x, y:event.y }
     }
@@ -33,12 +35,14 @@
     });
     gsap.ticker.lagSmoothing(0);
     lenis.on('scroll', throttle(target => {
-        innerWidth > 500? strokeOffset = 160 - target.progress*160: strokeOffset = 130 - target.progress*130;
+        strokeOffset = 160 - target.progress*160
     }, 30));
 
     function scrollTo(target){
         lenis.scrollTo(target)
     }
+
+    console.log(data.url)
 </script>
 
 <svelte:head>
@@ -61,6 +65,11 @@
 {#if quick}
 <Quick { w } { strokeOffset } { scrollTo } />
 {/if}
-<main>
+{#key data.url}
+<main
+    in:fade={{ duration:300, delay:200 }}
+    out:fade={{ duration:300 }}
+>
     <slot />
 </main>
+{/key}
