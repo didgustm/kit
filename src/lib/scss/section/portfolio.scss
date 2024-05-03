@@ -1,8 +1,14 @@
 @use '$scss/set/variable' as var;
 
 .portfolio{
-    background:var.$dark;
     color:var.$light;
+    .bg{
+        @include var.absDefault();
+        right:0;
+        bottom:0;
+        background:linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(70,70,70,1) 50%, rgba(0,0,0,1) 100%);
+        background-size:400% 400%
+    }
     .inner{
         padding-bottom:15rem
     }

@@ -10,12 +10,23 @@
     }
     .list{
         display:grid;
-        gap:8rem;
+        gap:4rem;
         li{
+            position:relative;
             @include var.flex(flex-start, center);
             gap:5rem;
+            padding-bottom:4rem;
             .img{
                 color:var.$dgray
+            }
+            .line{
+                position:absolute;
+                bottom:0;
+                left:0;
+                right:0;
+                height:1px;
+                background:var.$gray;
+                transform-origin:0 50%
             }
         }
         dt{

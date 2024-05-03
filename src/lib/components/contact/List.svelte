@@ -13,6 +13,7 @@
             <dt>Email</dt>
             <dd><a href="mailto:didgustm12@naver.com"  target="_blank">didgustm12@naver.com</a></dd>
         </dl>
+        <div class="line"></div>
     </li>
     <li class="list02">
         <span class="img">
@@ -22,6 +23,7 @@
             <dt>Github</dt>
             <dd><a href="https://github.com/didgustm?tab=repositories"  target="_blank">https://github.com/didgustm?tab=repositories</a></dd>
         </dl>
+        <div class="line"></div>
     </li>
     <li class="list03">
         <span class="img">
@@ -31,5 +33,6 @@
             <dt>Instagram</dt>
             <dd><a href="https://www.instagram.com/jegalryanghyun/"  target="_blank">https://www.instagram.com/jegalryanghyun/</a></dd>
         </dl>
+        <div class="line"></div>
     </li>
 </ul>

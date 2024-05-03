@@ -64,13 +64,6 @@ section{
         font-size:5.5rem
     }
 }
-.down{
-    .title{
-        p{
-            transition:opacity 0.4s
-        }
-    }
-}
 .cursor{
     position:fixed;
     @include var.circle(15px);
@@ -78,7 +71,7 @@ section{
     mix-blend-mode:difference;
     transform:translate(-50%, -50%) translate(var(--x, 0px), var(--y, 0px));
     pointer-events:none;
-    z-index:10
+    z-index:101
 }
 html.lenis {
     height: auto;
@@ -98,7 +91,7 @@ html.lenis {
 
 .footer{
     width:100%;
-    padding:10rem 0 3rem;
+    padding:6rem 0 3rem;
     text-align:center;
     // @media(orientation:landscape){
     //     padding-top:5rem

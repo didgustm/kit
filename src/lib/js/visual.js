@@ -37,12 +37,13 @@ function Visual(canvas){
     let floor = Bodies.rectangle(innerWidth / 2, innerHeight+10, innerWidth, 20, {
         isStatic: true,
         label: 'floor',
-        render: { fillStyle: '#979797' }
+        render: { fillStyle: '#cacaca' }
     });
 
     // particles
     let radius = innerWidth < 500? [10, 15]: innerWidth < 1000? [12, 17]: [15, 20];
     pushParticle(particles, Bodies, Common, 20, radius);
+    //this.render.context.filter =`blur(1px)`
 
     // staticA
     drawStaticA(statics, Bodies, innerWidth * 0.06, innerHeight * 0.1, radius[1]*2.5, radius[1]/3.5);
@@ -312,7 +313,7 @@ function drawStaticA(array, body, xpos, ypos, gap, row){
                     isStatic: true,
                     friction: 0,
                     restitution: 0,
-                    render: { fillStyle: '#979797' }
+                    render: { fillStyle: '#cacaca' }
                 })
             );
         }
@@ -332,8 +333,8 @@ function withLetter(letters, array1, array2, body, constraint){
                 inertia: Infinity,
                 restitution: 0.8,
                 friction: 0,
-                chamfer: { radius: idx == 0? 10: letterSet.width / 2 },
-                render: { fillStyle: '#CACACA', visible: false }
+                chamfer: { radius: idx == 0? 20: idx == 1? [0, 30, 30, 0]: letterSet.width / 2 },
+                render: { fillStyle: '#979797', visible: false }
             }
         );
         let bc = constraint.create({

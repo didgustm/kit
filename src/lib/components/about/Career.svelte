@@ -1,5 +1,5 @@
 <div class="career">
-    <div class="shape"></div>
+    <!-- <div class="shape"></div> -->
     <div class="line "></div>
     <ul>
         <li class="career01">

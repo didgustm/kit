@@ -5,7 +5,7 @@
     import Ham from './Ham.svelte'
     import Menu from './Menu.svelte';
 
-    export let w, strokeOffset, scrollTo;
+    export let strokeOffset, scrollTo;
     
     let show = false;
     function gnbOpen(){
@@ -14,7 +14,7 @@
 </script>
 
 <div class="quick">
-    <Blobs { show } { w } { strokeOffset } />
+    <Blobs { show } { strokeOffset } />
     <Ham { show } { gnbOpen } { Fa } />
     {#if show}
     <Menu { Fa } { scrollTo } />

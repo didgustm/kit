@@ -1,7 +1,7 @@
 <script>
     import { fly } from 'svelte/transition'
     
-    export let show, w, strokeOffset;
+    export let show, strokeOffset;
 </script>
 
 <svg class="line">

@@ -17,7 +17,7 @@
         align-items:flex-start;
         padding-top:6rem;
         .date{
-            color:var.$dgray;
+            color:var.$dblue;
             @include var.fontWeight(300)
         }
     }
@@ -28,12 +28,11 @@
         z-index:1;
         .shape{
             @include var.absDefault();
-            @include var.circle(7rem);
+            width:7rem;
+            height:7rem;
+            border-radius:43% 53% 40% 60%;
             background:var.$theme;
-            transform:scale(7);
-            opacity:.3;
-            transform-origin:50% 40%;
-            filter:blur(10px);
+            opacity:.2;
             z-index:-1;
         }
         .image{
@@ -45,15 +44,6 @@
         position:relative;
         margin-top:3rem;
         z-index:1;
-        .shape{
-            @include var.absDefault(0.4rem, 0);
-            @include var.circle(1rem);
-            background:#E2CBDE;
-            transform:scale(50);
-            // opacity:;
-            filter:blur(5px);
-            z-index:-1
-        }
         .line{
             @include var.pseudo(1px, auto);
             top:1rem;
@@ -83,6 +73,7 @@
     .skills{
         position:relative;
         margin-top:8rem;
+        z-index:1;
         .bgs{
             @include var.absDefault();
             right:0;
@@ -106,7 +97,7 @@
             gap:2rem;
         }
         li{
-            --dot:#FFC8D7;
+            --dot:#979797;
             position:relative;
             @include var.flex(space-between, flex-start, wrap, column);
             padding:5rem 3rem 3rem;
@@ -207,7 +198,7 @@
             }
             li{
                 &:nth-child(even){
-                    --dot:#FFC8D7;
+                    --dot:#979797;
                     background:#fff;
                     color:var.$dark;
                 }

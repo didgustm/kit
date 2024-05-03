@@ -17,7 +17,7 @@
         line-height:1.2;
         .letter{
             display:inline-block;
-            color:var.$gray
+            color:var.$dgray
         }
     }
     .canvas{
@@ -25,7 +25,7 @@
         width:100%;
         height:100%;
         z-index:2;
-        mix-blend-mode:difference
+        mix-blend-mode:difference;
     }
     .scroll{
         position:absolute;
@@ -46,17 +46,66 @@
         mix-blend-mode:difference
     }
     .bg2{
+        --progress:0;
         @include var.absDefault();
         width:100vw;
         height:100vh;
         background:#fff;
         z-index:4
     }
-
+    .banner{
+        position:absolute;
+        width:200%;
+        height:12rem;
+        padding:0 5rem;
+        color:#fff;
+        @include var.setFont(4rem, 700);
+        opacity:0;
+        .in{
+            @include var.flex(center, center, nowrap);
+            width:100%;
+            height:100%;
+            transform:translateX(calc(100% -  var(--progress) * 100%))
+        }
+        p{
+            flex-shrink:0;
+        }
+        &.banner01{
+            top:50%;
+            left:-40%;
+            transform:rotate(15deg) translateX(50%);
+            background:rgba(0,0,0,.7)
+            
+        }
+        &.banner02{
+            top:50%;
+            left:-60%;
+            transform:rotate(-20deg) translateX(-50%);
+            background:rgba(0,0,0,.9);
+            filter:blur(2px)
+        }
+        &.banner03{
+            top:45%;
+            left:0%;
+            transform:translateX(-50%);
+            background:rgba(0,0,0,.5);
+            filter:blur(3px)
+        }
+    }
     @include var.custom(1600px, min){
         .canvas{
             max-width:1600px;
             left:calc(50% - 800px)
+        }
+    }
+    @include var.custom(var.$mobile){
+        .banner{
+            &.banner01{
+                transform:rotate(25deg) translateX(50%)
+            }
+            &.banner02{
+                transform:rotate(-30deg) translateX(-50%);
+            }
         }
     }
     @include var.custom(500px){
