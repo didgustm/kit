@@ -89,10 +89,10 @@
     .bg{
         @include var.absDefault(calc(50% - 40rem), calc(50% - 40rem));
         @include var.circle(80rem);
-        background:var.$theme;
-        z-index:3;
-        box-shadow:0 0 10rem rgba(255,255,255,.7);
-        mix-blend-mode:difference
+        background:radial-gradient(circle, rgba(255,255,255,.1), rgba(255,255,255,.05));
+        backdrop-filter:blur(4px);
+        box-shadow:0 5px 10px rgba(255,255,255,.4), inset 0 10px 10px rgba(255,255,255,.4);
+        z-index:3
     }
     .bg2{
         --progress:0;
@@ -109,6 +109,7 @@
         padding:0 5rem;
         color:var.$dark;
         @include var.setFont(4rem, 700);
+        box-shadow:0 0.5rem 1rem rgba(0,0,0,.1);
         opacity:0;
         .in{
             @include var.flex(center, center, nowrap);

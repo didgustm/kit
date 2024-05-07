@@ -1,6 +1,6 @@
 <script>
     import Fa from 'svelte-fa'
-    import { faPenToSquare, faKeyboard, faPalette, faChartSimple } from '@fortawesome/free-solid-svg-icons';
+    import { faPenToSquare, faKeyboard, faPalette, faChartSimple } from '@fortawesome/free-solid-svg-icons'
 </script>
 
 <div class="skills">

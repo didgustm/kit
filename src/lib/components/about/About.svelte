@@ -3,6 +3,7 @@
     import { onMount } from 'svelte'
     import { gsap } from 'gsap'
     import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
+    import Cube from './Cube.svelte'
     import Title from './Title.svelte'
     import Info from './Info.svelte'
     import Career from './Career.svelte'
@@ -53,16 +54,7 @@
 
 <section class="about">
     <div class="inner">
-        <div class="shapes">
-            <div class="cube">
-                <div class="cube-front"></div>
-                <div class="cube-back"></div>
-                <div class="cube-left"></div>
-                <div class="cube-right"></div>
-                <div class="cube-top"></div>
-                <div class="cube-bottom"></div>
-            </div>
-        </div>
+        <Cube />
         <Title />
         <div class="introduce">
             <Info />
