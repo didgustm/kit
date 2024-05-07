@@ -37,7 +37,7 @@
             @include var.setFont(1.8rem, 300);
             line-height:1.35;
             word-break:break-all;
-            color:var.$dgray;
+            color:var.$gray;
             a:hover{
                 color:var.$dark;
                 text-decoration:underline

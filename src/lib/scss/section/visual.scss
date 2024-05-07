@@ -4,10 +4,57 @@
     width:100vw;
     height:100svh;
     background:var.$dark;
-    background-image:radial-gradient(circle, rgba(0,0,0,1) 0%, rgba(70,70,70,1) 100%);
     color:var.$light;
     overflow:hidden;
     z-index:1;
+    .space{
+        @include var.absDefault();
+        right:0;
+        bottom:0;
+        perspective:1920px;
+        z-index:-2;
+        div{
+            position:absolute;
+            width:100%;
+            height:100%;
+            background:linear-gradient(var(--dir), #000 0%, rgba(255,255,255,.2) 80%);
+            // background-image:linear-gradient(rgba(255,255,255, .2) .1em, transparent .1em), linear-gradient(90deg, rgba(255, 255, 255, .2) .1em, transparent .1em);
+            // background-size:8rem 8rem;
+            transform:rotateX(var(--x,0)) rotateY(var(--y, 0));
+            transform-origin:var(--xo, 50%) var(--yo, 50%)
+        }
+        .top{
+            --dir:0;
+            --x:-90deg;
+            --yo:0;
+            border:#fff solid;
+            border-width:0 1px;
+            border-image:linear-gradient(180deg, rgba(255,255,255,.7), transparent);
+            border-image-slice:1
+        }
+        .bottom{
+            --dir:180deg;
+            --x:90deg;
+            --yo:100%;
+            border:#fff solid;
+            border-width:0 1px;
+            border-image:linear-gradient(0, rgba(255,255,255,.7), transparent);
+            border-image-slice:1
+        }
+        .left{
+            --dir:270deg;
+            --y:90deg;
+            --xo:0;
+            width:100vh;
+        }
+        .right{
+            --dir:90deg;
+            --y:-90deg;
+            --xo:100%;
+            right:0;
+            width:100vh
+        }
+    }
     .inner{
         @include var.flexCenter();
         height:100svh        
@@ -18,7 +65,7 @@
         line-height:1.2;
         .letter{
             display:inline-block;
-            color:var.$gray
+            color:var.$theme
         }
     }
     .canvas{
@@ -42,8 +89,9 @@
     .bg{
         @include var.absDefault(calc(50% - 40rem), calc(50% - 40rem));
         @include var.circle(80rem);
-        background:var.$gray;
+        background:var.$theme;
         z-index:3;
+        box-shadow:0 0 10rem rgba(255,255,255,.7);
         mix-blend-mode:difference
     }
     .bg2{
@@ -59,7 +107,7 @@
         width:200%;
         height:12rem;
         padding:0 5rem;
-        color:#fff;
+        color:var.$dark;
         @include var.setFont(4rem, 700);
         opacity:0;
         .in{
@@ -75,21 +123,22 @@
             top:50%;
             left:-40%;
             transform:rotate(15deg) translateX(50%);
-            background:rgba(0,0,0,.7)
+            background:rgba(232, 213, 198,.7)
             
         }
         &.banner02{
             top:50%;
             left:-60%;
             transform:rotate(-20deg) translateX(-50%);
-            background:rgba(0,0,0,.9);
+            background:rgba(232, 213, 198,.9);
             filter:blur(2px)
         }
         &.banner03{
             top:45%;
             left:0%;
+            width:110%;
             transform:translateX(-50%);
-            background:rgba(0,0,0,.5);
+            background:rgba(232, 213, 198,.5);
             filter:blur(3px)
         }
     }

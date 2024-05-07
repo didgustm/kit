@@ -37,7 +37,7 @@ function Visual(canvas){
     let floor = Bodies.rectangle(innerWidth / 2, innerHeight+10, innerWidth, 20, {
         isStatic: true,
         label: 'floor',
-        render: { fillStyle: '#979797' }
+        render: { fillStyle: '#3d3d3d' }
     });
 
     // particles
@@ -53,7 +53,7 @@ function Visual(canvas){
         friction: 1,
         restitution: 0,
         mass: 1280 / vw,
-        render: { fillStyle: '#FFC8D7' }
+        render: { fillStyle: '#e8d5c6' }
     }),
     circleAC = Constraint.create({
         pointA: Matter.Vector.clone(circleA.position),
@@ -65,7 +65,7 @@ function Visual(canvas){
         friction: 1,
         restitution: 0,
         mass: 1600 / vw,
-        render: { fillStyle: '#FFC8D7' }
+        render: { fillStyle: '#fff' }
     }),
     circleBC = Constraint.create({
         pointA: Matter.Vector.clone(circleB.position),
@@ -77,7 +77,7 @@ function Visual(canvas){
         friction: 1,
         restitution: 0,
         mass: 800 / vw,
-        render: { fillStyle: '#FFC8D7' }
+        render: { fillStyle: '#e8d5c6' }
     }),
     circleCC = Constraint.create({
         pointA: Matter.Vector.clone(circleC.position),
@@ -92,7 +92,7 @@ function Visual(canvas){
         restitution: 0,
         collisionFilter: { group },
         chamfer: { radius:10 },
-        render: { fillStyle: '#F9F871' }
+        render: { fillStyle: '#e8d5c6' }
     }),
     triangleC = Constraint.create({
         pointA: Matter.Vector.clone(triangle.position),
@@ -103,11 +103,11 @@ function Visual(canvas){
     // cross
     let partA = Bodies.rectangle(vw * 0.23, innerHeight * 0.65, radius[1]*10, radius[1]*10/4, {
         chamfer: { radius: 8 },
-        render: { fillStyle: '#FFDB8A' }
+        render: { fillStyle: '#e8d5c6' }
     }),
     partB = Bodies.rectangle(vw * 0.23, innerHeight * 0.65, radius[1]*10/4, radius[1]*10, {
         chamfer: { radius: 8 },
-        render: { fillStyle: '#FFDB8A' }
+        render: { fillStyle: partA.render.fillStyle }
     }),
     compound = Body.create({
         restitution: 0,
@@ -128,7 +128,7 @@ function Visual(canvas){
         restitution: 1,
         collisionFilter: { group },
         chamfer: { radius: 5 },
-        render:{ fillStyle: '#FFCAB5' }
+        render:{ fillStyle: '#fff' }
     }),
     baseA = Bodies.rectangle(catapult.position.x - (radius[1]*10)/2 + radius[1]/0.6, innerHeight - radius[1]/0.6, radius[1]/0.6, 30, baseOption),
     baseB = Bodies.rectangle(catapult.position.x + (radius[1]*10)/2 -  radius[1]/0.6, innerHeight - radius[1]/0.6, radius[1]/0.6, 30, baseOption),
@@ -306,13 +306,14 @@ function drawStaticA(array, body, xpos, ypos, gap, row){
                 x: j % 2 == 0? (gap * i) + xpos: (gap * i) + (xpos+gap/2),
                 y: (gap-10) * j + ypos
             }
+            let bg = ['#e8d5c6', '#fff'];
             array.push(
                 body.rectangle(pos.x, pos.y, 6, 6, {
                     label: 'static',
                     isStatic: true,
                     friction: 0,
                     restitution: 0,
-                    render: { fillStyle: '#979797' }
+                    render: { fillStyle: bg[Math.floor(Math.random() * 2)] }
                 })
             );
         }
@@ -333,7 +334,7 @@ function withLetter(letters, array1, array2, body, constraint){
                 restitution: 0.8,
                 friction: 0,
                 chamfer: { radius: idx == 0? 20: idx == 1? [0, 30, 30, 0]: letterSet.width / 2 },
-                render: { fillStyle: '#cacaca', visible: false }
+                render: { fillStyle: '#e8d5c6', visible: false }
             }
         );
         let bc = constraint.create({

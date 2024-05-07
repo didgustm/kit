@@ -13,7 +13,7 @@
 <div class="lineShape">
     <svg width="100%" height="100%">
         <path
-            d="M40,0 L40,120, 120,120, 120,160 80,160, 80,240 240,240, 240,320 160,320 160,600 280,600 280,996" fill="none" stroke="#fff" stroke-width="1" opacity="0.5"
+            d="M40,0 L40,120, 120,120, 120,160 80,160, 80,240 240,240, 240,320 160,320 160,600 280,600 280,996" fill="none" stroke="#e8d5c6" stroke-width="1" opacity="0.5"
         />
     </svg>
 </div>

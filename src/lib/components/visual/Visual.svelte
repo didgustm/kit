@@ -34,28 +34,23 @@
                 }
             }
         });
-        mm.add('(min-width:768px)', () => {
-            pin.to('.visual .title', { scale:1.2, ease:'none' })
-            .to('.visual .title', { scale:1.5, ease:'none' })
-            .fromTo('.visual .bg', { scale:0 }, { scale:5, duration:2, ease:'none' }, '<')
-            .fromTo('.visual .bg2', { scale:0, opacity:0 }, { scale:1 }, '<')
-            .to('.visual .bg2', { opacity:1, duration:0.4 }, '-=1')
-            .to('.visual .banner', { x:0, y:0, opacity:1, duration:1, ease:'none' }, '-=0.5')
-            .fromTo('.visual .banner .in', { opacity:0 }, { opacity:1 })
-        });
-        mm.add('(max-width:768px)', () => {
-            pin.to('.visual .title', { scale:1.2, ease:'none' })
-            .to('.visual .title', { scale:1.5, ease:'none' })
-            .fromTo('.visual .bg', { scale:0 }, { scale:5, duration:2, ease:'none' }, '<')
-            .fromTo('.visual .bg2', { scale:0, opacity:0 }, { scale:1 }, '<')
-            .to('.visual .bg2', { opacity:1, duration:0.4 }, '-=1')
-            .to('.visual .banner', {  x:0, y:0, opacity:1, duration:1, ease:'none' }, '-=0.5')
-            .fromTo('.visual .banner .in', { opacity:0 }, { opacity:1 })
-        });
+        pin.to('.visual .title', { scale:1.2, ease:'none' })
+        .to('.visual .title', { scale:1.5, ease:'none' })
+        .fromTo('.visual .bg', { scale:0 }, { scale:5, duration:2, ease:'none' }, '<')
+        .fromTo('.visual .bg2', { scale:0, opacity:0 }, { scale:1 }, '<')
+        .to('.visual .bg2', { opacity:1, duration:0.4 }, '-=1')
+        .to('.visual .banner', { x:0, y:0, xPercent:0, opacity:1, duration:1, ease:'none' }, '-=0.5')
+        .fromTo('.visual .banner .in', { opacity:0 }, { opacity:1 })
     })
 </script>
 
 <section class="visual">
+    <div class="space">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+    </div>
     <div class="canvas" bind:this={canvas}></div>
     <div class="inner">
         <Title />

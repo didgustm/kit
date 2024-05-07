@@ -33,7 +33,7 @@
         bottom:0;
         span{
             position:absolute;
-            background:var.$light
+            background:var.$theme
         }
         .line01{
             --x:100%;
@@ -79,7 +79,7 @@
             overflow:visible
         }
         &::part(scrollbar){
-            --swiper-scrollbar-drag-bg-color:#979797;
+            --swiper-scrollbar-drag-bg-color:#e8d5c6;
             left:0;
             right:0;
             bottom:-5rem;
