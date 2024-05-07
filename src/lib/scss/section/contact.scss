@@ -44,6 +44,13 @@
             }
         }
     }
+    .lottie{
+        position:absolute;
+        bottom:0;
+        width:40%;
+        opacity:0.7;
+        z-index:-1
+    }
 
     @include var.custom(var.$mobile){
         .inner{
@@ -53,6 +60,16 @@
         }
         .list{
             gap:5rem;
+            dd a{
+                color:#000
+            }
+        }
+        .lottie{
+            bottom:auto;
+            top:0;
+            right:0;
+            width:80%;
+            opacity:0.4
         }
     }
     @include var.custom(500px){

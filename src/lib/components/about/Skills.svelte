@@ -5,26 +5,29 @@
 
 <div class="skills">
     <div class="bgs">
-        <div class="bg"></div>
-        <div class="bg dark"></div>
-        <div class="bg dark"></div>
-        <div class="bg"></div>
+        <div class="bg01 bg"></div>
+        <div class="bg02 bg dark"></div>
+        <div class="bg03 bg dark"></div>
+        <div class="bg04 bg"></div>
     </div>
     <ul>
         <li class="box box01">
-            <dl>
-                <dt>Tools</dt>
-                <dd>
-                    <p>- VSCode</p>
-                    <p>- Github</p>
-                    <p>- Photoshop</p>
-                    <p>- XD</p>
-                    <p>- Figma</p>
-                </dd>
-            </dl>
-            <div class="icon">
-                <span class="dot"></span>
-                <svelte:component this={ Fa } icon={ faPenToSquare } size="2.5x" />
+            <div class="bg"></div>
+            <div class="box_inner">
+                <dl>
+                    <dt>Tools</dt>
+                    <dd>
+                        <p>- VSCode</p>
+                        <p>- Github</p>
+                        <p>- Photoshop</p>
+                        <p>- XD</p>
+                        <p>- Figma</p>
+                    </dd>
+                </dl>
+                <div class="icon">
+                    <span class="dot"></span>
+                    <svelte:component this={ Fa } icon={ faPenToSquare } size="2.5x" />
+                </div>
             </div>
         </li>
         <li class="box box02 dark">

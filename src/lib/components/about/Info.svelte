@@ -3,7 +3,6 @@
 </script>
 
 <div class="info">
-    <div class="shape"></div>
     <span class="image">
         <img src="{ me }" alt="">
     </span>

@@ -99,8 +99,33 @@ $landscape:500px;
 		background-position: 0% 50%;
 	}
 }
-@keyframes wave{
-    to{
-        transform:rotate(1turn)
+@keyframes v-line{
+    30%{
+        transform:translateX(0)
+    }
+    60%{
+        transform:translateX(var(--x))
+    }
+    100%{
+        transform:translateX(var(--x))
+    }
+}
+@keyframes h-line{
+    30%{
+        transform:translateY(0)
+    }
+    60%{
+        transform:translateY(var(--y))
+    }
+    100%{
+        transform:translateY(var(--y))
+    }
+}
+@keyframes draw{
+    50%{
+        stroke-dashoffset:0
+    }
+    100%{
+        stroke-dashoffset:-150rem
     }
 }

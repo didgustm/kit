@@ -1,8 +1,9 @@
 <script>
     import '$scss/section/detail.scss'
-    import { onMount } from 'svelte'
     import { fade } from 'svelte/transition'
-    import { detailScroll } from '$js/utils'
+    import { onMount } from 'svelte'
+    import { gsap } from 'gsap'
+    import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
     import { views } from '$js/view'
     import Fa from 'svelte-fa'
     import { faChevronUp, faXmark } from '@fortawesome/free-solid-svg-icons'
@@ -11,7 +12,7 @@
     import Loading from '$comp/detail/Loading.svelte';
 
     export let data;
-
+    gsap.registerPlugin(ScrollTrigger);
     let detail, loading = false, scrollY = 0;
     const arr = [...views].reverse(),
                 src = arr[data.id - 1];
@@ -35,7 +36,13 @@
             }, 500)
         }
         
-        detailScroll()
+        let tl = gsap.timeline({
+                scrollTrigger: {
+                trigger:'.detail'
+            }
+        });
+        tl.fromTo('.fadeup', { yPercent:100, opacity:0 }, { yPercent:0, opacity:1, duration:1, delay:1 })
+        .fromTo('.view_img', { opacity:0 }, { opacity:1, duration:1, ease:'none' }, '<');
     })
     
 </script>

@@ -9,6 +9,7 @@
 
     let isMobile = window.matchMedia('(pointer:coarse)').matches;
     let strokeOffset = 160;
+    let rotates = { x:30, y:15 }
     const mousePos = spring({ x:0, y:0 }, { stiffness:0.5 });
     const onMouseMove = (event) => {
         $mousePos = { x:event.x, y:event.y }
@@ -27,7 +28,9 @@
     });
     gsap.ticker.lagSmoothing(0);
     lenis.on('scroll', throttle(target => {
-        strokeOffset = 160 - target.progress*160
+        strokeOffset = 160 - target.progress*160;
+        rotates.x = 360 * target.progress - 10;
+        rotates.y = 360 * target.progress - 5
     }, 30));
 
     function scrollTo(target){
@@ -52,6 +55,9 @@
 </div>
 {/if}
 <Quick { strokeOffset } { scrollTo } />
-<main>
+<main
+    style:--rotateX={`${rotates.x}deg`}
+    style:--rotateY={`${rotates.y}deg`}
+>
     <slot />
 </main>

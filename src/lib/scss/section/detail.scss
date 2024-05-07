@@ -33,9 +33,9 @@
         font-size:1.8rem;
         line-height:1.35;
         margin:2rem 0;
-        color:#616161;
+        color:var.$gray;
         &:hover{
-            color:var.$theme;
+            color:var.$dark;
             text-decoration:underline
         }
     }
@@ -106,7 +106,7 @@
             }
         }
         .url{
-            color:var.$theme
+            color:var.$dark
         }
     }
     @include var.custom(500px){

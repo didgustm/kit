@@ -4,6 +4,7 @@
     width:100vw;
     height:100svh;
     background:var.$dark;
+    background-image:radial-gradient(circle, rgba(0,0,0,1) 0%, rgba(70,70,70,1) 100%);
     color:var.$light;
     overflow:hidden;
     z-index:1;
@@ -17,7 +18,7 @@
         line-height:1.2;
         .letter{
             display:inline-block;
-            color:var.$dgray
+            color:var.$gray
         }
     }
     .canvas{
