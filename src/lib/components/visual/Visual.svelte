@@ -47,7 +47,7 @@
 <section class="visual">
     <div class="space">
         <div class="top"></div>
-        <div class="bottom"></div>
+        <!-- <div class="bottom"></div> -->
         <div class="left"></div>
         <div class="right"></div>
     </div>
