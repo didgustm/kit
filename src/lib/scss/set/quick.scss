@@ -80,6 +80,11 @@
             font-size:15px
         }
     }
+    @include var.custom(var.$mobile){
+        .blobs{
+            filter:none
+        }
+    }
     @include var.custom(500px){
         .line{
             width:40px;

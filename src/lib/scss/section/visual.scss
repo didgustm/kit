@@ -2,7 +2,7 @@
 
 .visual{
     width:100vw;
-    height:100svh;
+    height:100vh;
     background:var.$dark;
     color:var.$light;
     overflow:hidden;
@@ -143,6 +143,9 @@
         }
     }
     @include var.custom(var.$mobile){
+        .canvas{
+            pointer-events:none
+        }
         .banner{
             &.banner01{
                 transform:rotate(25deg) translateX(50%)
@@ -151,12 +154,13 @@
                 transform:rotate(-30deg) translateX(-50%);
             }
         }
+        .scroll{
+            bottom:auto;
+            top:calc(100svh - 2rem)
+        }
     }
     @include var.custom(500px){
         .space{
-            div{
-                background-image:linear-gradient(rgba(255,255,255, .2) .1em, transparent .1em), linear-gradient(90deg, rgba(255, 255, 255, .2) .1em, transparent .1em);
-            }
             .left, .rigt{
                 width:100%
             }
@@ -168,6 +172,11 @@
     @include var.custom(320px){
         .title{
             font-size:7rem
+        }
+    }
+    @media (max-height: 520px) and (min-width: 560px){
+        .canvas{
+            pointer-events:none
         }
     }
 }

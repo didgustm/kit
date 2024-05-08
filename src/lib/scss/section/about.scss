@@ -5,7 +5,6 @@
     color:var.$dark;
     background:var.$light;
     font-size:1.8rem;
-    overflow:visible;
     .shapes{
         @include var.absDefault(5%, 70%);
         width:30rem;

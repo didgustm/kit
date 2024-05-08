@@ -224,11 +224,12 @@ function Visual(canvas){
         });
         this.render.canvas.width = innerWidth >= 1600? 1600: innerWidth;
         this.render.canvas.height = innerHeight;
+        Body.setPosition(floor, { x: newVw / 2, y: innerHeight+10 });
+        Body.scale(floor, newVw / vw, 1); 
         
         if(innerWidth != vw && resizing){
             radius = innerWidth < 500? [10, 15]: innerWidth < 1000? [12, 17]: [15, 20];
-            Body.setPosition(floor, { x: newVw / 2, y: innerHeight+10 });
-            Body.scale(floor, newVw / vw, 1); 
+            
 
             Body.setPosition(circleA, { x: newVw * 0.7, y: innerHeight * 0.3 });
             Body.setPosition(circleB, { x: circleA.position.x + radius[1]*4 + radius[1]*2.2, y: circleA.position.y + radius[1]*2.2 });
