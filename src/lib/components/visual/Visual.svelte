@@ -9,38 +9,41 @@
     import Scroll from './Scroll.svelte';
 
     gsap.registerPlugin(ScrollTrigger);
-    let mm = gsap.matchMedia();
+    //let mm = gsap.matchMedia();
     let canvas;
     onMount(() => {
-        let matter = new Visual(canvas);
-        let pin = gsap.timeline({
-            scrollTrigger: {
-                trigger: '.visual',
-                pin: true,
-                anticipatePin: 1,
-                fastScrollEnd: true,
-                scrub: 0,
-                end: `${innerHeight * 2}`,
-                onUpdate: ({progress}) => {
-                    document.querySelector('.visual .bg2').style.setProperty('--progress', progress)
-                },
-                onLeave: () => {
-                    matter.Render.stop(matter.render);
-                    matter.Runner.stop(matter.runner)
-                },
-                onEnterBack: () => {
-                    matter.Render.run(matter.render);
-                    matter.Runner.run(matter.runner, matter.engine);
+        let ctx = gsap.context(() => {
+            let matter = new Visual(canvas);
+            let pin = gsap.timeline({
+                scrollTrigger: {
+                    trigger: '.visual',
+                    pin: true,
+                    anticipatePin: 1,
+                    fastScrollEnd: true,
+                    scrub: 0,
+                    end: `${innerHeight * 2}`,
+                    onUpdate: ({progress}) => {
+                        document.querySelector('.visual .bg2').style.setProperty('--progress', progress)
+                    },
+                    onLeave: () => {
+                        matter.Render.stop(matter.render);
+                        matter.Runner.stop(matter.runner)
+                    },
+                    onEnterBack: () => {
+                        matter.Render.run(matter.render);
+                        matter.Runner.run(matter.runner, matter.engine);
+                    }
                 }
-            }
+            });
+            pin.to('.visual .title', { scale:1.2, ease:'none' })
+            .to('.visual .title', { scale:1.5, ease:'none' })
+            .fromTo('.visual .bg', { scale:0 }, { scale:5, duration:2, ease:'none' }, '<')
+            .fromTo('.visual .bg2', { scale:0, opacity:0 }, { scale:1 }, '<')
+            .to('.visual .bg2', { opacity:1, duration:0.4 }, '-=1')
+            .to('.visual .banner', { x:0, y:0, xPercent:0, opacity:1, duration:1, ease:'none' }, '-=0.5')
+            .fromTo('.visual .banner .in', { opacity:0 }, { opacity:1 });
         });
-        pin.to('.visual .title', { scale:1.2, ease:'none' })
-        .to('.visual .title', { scale:1.5, ease:'none' })
-        .fromTo('.visual .bg', { scale:0 }, { scale:5, duration:2, ease:'none' }, '<')
-        .fromTo('.visual .bg2', { scale:0, opacity:0 }, { scale:1 }, '<')
-        .to('.visual .bg2', { opacity:1, duration:0.4 }, '-=1')
-        .to('.visual .banner', { x:0, y:0, xPercent:0, opacity:1, duration:1, ease:'none' }, '-=0.5')
-        .fromTo('.visual .banner .in', { opacity:0 }, { opacity:1 })
+        return () => ctx.revert();
     })
 </script>
 
