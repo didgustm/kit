@@ -23,8 +23,7 @@
         let progress = scrollY / (document.getElementById('app').offsetHeight - innerHeight);
         strokeOffset = 160 - progress*160;
         rotates.x = 360 * progress - 10;
-        rotates.y = 360 * progress - 5;
-        console.log(progress)
+        rotates.y = 360 * progress - 5
     }
 
     
