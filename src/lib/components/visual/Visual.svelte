@@ -4,6 +4,8 @@
     import { gsap } from 'gsap'
     import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
     import { Visual } from '$js/visual'
+    import lottie from 'lottie-web'
+    import animationData from '$js/grid_motion.json'
     import Title from './Title.svelte'
     import Banners from './Banners.svelte'
     import Scroll from './Scroll.svelte';
@@ -11,9 +13,17 @@
     gsap.registerPlugin(ScrollTrigger);
     //let mm = gsap.matchMedia();
     let canvas;
+    let lottieContainer;
+    let matter;
     onMount(() => {
+        let motion = lottie.loadAnimation({
+            container: lottieContainer,
+            animationData,
+            autoplay: true,
+            loop: true
+        });
+        matter = new Visual(canvas);
         let ctx = gsap.context(() => {
-            let matter = new Visual(canvas);
             let pin = gsap.timeline({
                 scrollTrigger: {
                     trigger: '.visual',
@@ -48,12 +58,13 @@
 </script>
 
 <section class="visual">
-    <div class="space">
+    <div class="lottie" bind:this={ lottieContainer }></div>
+    <!-- <div class="space">
         <div class="top"></div>
-        <!-- <div class="bottom"></div> -->
+        <!-- <div class="bottom"></div>
         <div class="left"></div>
         <div class="right"></div>
-    </div>
+    </div> -->
     <div class="canvas" bind:this={canvas}></div>
     <div class="inner">
         <Title />

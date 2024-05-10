@@ -164,9 +164,10 @@ function Visual(canvas){
     Composite.add(world, [floor, ...particles, compound, comp, circleA, circleAC, circleB, circleBC, circleC, circleCC]);
     Composite.add(world, [catapult, catapultC, baseA, baseB]);
     Composite.add(world, statics);
-    if(!window.matchMedia('(pointer:coarse)').matches){
-        Composite.add(world, [cursor, triangle, triangleC]);
-    }
+    Composite.add(world, [cursor, triangle, triangleC]);
+    // if(!window.matchMedia('(pointer:coarse)').matches){
+    //     Composite.add(world, [cursor, triangle, triangleC]);
+    // }
     statics.forEach(x => {
         Body.rotate(x, Math.PI / Common.random(-1, 1))
     });
@@ -204,20 +205,19 @@ function Visual(canvas){
         }
     });
     Event.on(this.engine, 'afterUpdate', () => {
-        if(!mouse.position.x){
-            return
+        if(!window.matchMedia('(pointer:coarse)').matches){
+            Body.translate(cursor, { x: mouse.position.x - cursor.position.x, y: mouse.position.y -cursor.position.y })
         }
-        Body.translate(cursor, { x: mouse.position.x - cursor.position.x, y: mouse.position.y -cursor.position.y })
     });
 
     this.resize = () => {
         resizing = true;
         let newVw = innerWidth >= 1600? 1600: innerWidth;
-        if(!window.matchMedia('(pointer:coarse)').matches){
-            Composite.add(world, cursor);
-        } else{
-            Composite.remove(world, cursor);
-        }
+        // if(!window.matchMedia('(pointer:coarse)').matches){
+        //     Composite.add(world, cursor);
+        // } else{
+        //     Composite.remove(world, cursor);
+        // }
         
         Event.on(this.render, 'afterRender', () => {
             vw = innerWidth >= 1600? 1600: innerWidth
@@ -225,11 +225,10 @@ function Visual(canvas){
         this.render.canvas.width = innerWidth >= 1600? 1600: innerWidth;
         this.render.canvas.height = innerHeight;
         Body.setPosition(floor, { x: newVw / 2, y: innerHeight+10 });
-        Body.scale(floor, newVw / vw, 1); 
+        Body.scale(floor, newVw / vw, 1);     
         
         if(innerWidth != vw && resizing){
             radius = innerWidth < 500? [10, 15]: innerWidth < 1000? [12, 17]: [15, 20];
-            
 
             Body.setPosition(circleA, { x: newVw * 0.7, y: innerHeight * 0.3 });
             Body.setPosition(circleB, { x: circleA.position.x + radius[1]*4 + radius[1]*2.2, y: circleA.position.y + radius[1]*2.2 });
@@ -252,9 +251,6 @@ function Visual(canvas){
             Body.setPosition(compound, { x: newVw * 0.23, y: innerHeight * 0.65 });
             Body.scale(compound, (radius[1] * 10) / (compound.bounds.max.x - compound.bounds.min.x), (radius[1] * 10) / (compound.bounds.max.x - compound.bounds.min.x));
             Body.setInertia(compound, innerWidth*10);
-            Composite.allConstraints(world).forEach(x => {
-                x.pointA = Constraint.pointBWorld(x);
-            });
 
             Composite.remove(world, statics);
             statics.length = 0;
@@ -263,15 +259,19 @@ function Visual(canvas){
             if(resizing){
                 setTimeout(() => {
                     Composite.remove(world, [...blocks, ...blocksC]);
-                    blocks.length = 0;
-                    blocksC.length = 0;
-                    withLetter(letters, blocks, blocksC, Bodies, Constraint);
+                    // blocks.length = 0;
+                    // blocksC.length = 0;
+                    // withLetter(letters, blocks, blocksC, Bodies, Constraint);
                     Composite.add(world, [...blocks, ...blocksC]);
                     resizing = !resizing
                 }, 400);
             }
             statics.forEach(x => {
                 Body.rotate(x, Math.PI / Common.random(-1, 1))
+            });
+
+            Composite.allConstraints(world).forEach(x => {
+                x.pointA = Constraint.pointBWorld(x);
             });
         }
     }
